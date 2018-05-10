@@ -17,8 +17,8 @@ app.use(logger);
 */
 
 // view engine
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname,'views'));
+//app.set('view engine', 'ejs');
+//app.set('views', path.join(__dirname,'views'));
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -73,12 +73,14 @@ var users = [
 ]
 
 app.get('/', function(req, res){
-	db.users.find(function(err,docs){
+	/*db.users.find(function(err,docs){
 		res.render('index',{
 			title: 'Customers',
-			users: docs
+			users: users
 		});
 	});
+	*/
+	res.send('Hello world!');
 });
 
 app.post('/users/add', function(req, res){
@@ -100,22 +102,24 @@ app.post('/users/add', function(req, res){
 			last_name:req.body.last_name,
 			email:req.body.email,
 		}
-		db.users.insert(newUser,function(err, result){
+		/*db.users.insert(newUser,function(err, result){
 			if(err){
 				console.log(err);
 			}
 			res.redirect('/');
-		});
+		});*/
+		res.redirect('/');
 	}
 });
 
 app.delete('/users/delete/:id', function(req,res){
-	db.users.remove({_id: ObjectId(req.params.id)}, function(err,result){
+	/*db.users.remove({_id: ObjectId(req.params.id)}, function(err,result){
 		if(err){
 			console.log(err);
 		}
 		res.redirect('/');
-	});
+	});*/
+	res.redirect('/');
 });
 
 app.listen(3000, function(){
