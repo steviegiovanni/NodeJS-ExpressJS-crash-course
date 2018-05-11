@@ -6,6 +6,7 @@ var mongojs = require('mongojs')
 var db = mongojs('testapp',['users']);
 var ObjectId = mongojs.ObjectId;
 var app = express();
+const PORT = process.env.PORT || 3000
 
 /*
 var logger = function(req, res, next){
@@ -118,6 +119,6 @@ app.delete('/users/delete/:id', function(req,res){
 	});
 });
 
-app.listen(3000, function(){
-	console.log('Server started on port 3000...');
+app.listen(PORT, function(){
+	console.log('Server started on port '+PORT);
 })
